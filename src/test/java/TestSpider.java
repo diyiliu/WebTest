@@ -22,6 +22,7 @@ public class TestSpider {
 
     public final static String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.32 Safari/537.36";
 
+    public static String COOKIE_SESSION = "JSESSIONID=ydEOLarjxKmNBQMf+hi+fxxJ.undefined";
 
     public void test(String cookie) {
         RestTemplate restTemplate = new RestTemplate();
@@ -105,6 +106,8 @@ public class TestSpider {
 
         System.out.println(cookie);
 
+        COOKIE_SESSION = cookie;
+
         url = "http://czj909.com/caiZhiJiaCPLoginWeb/app/checkCode/image";
         headers = new HttpHeaders();
 
@@ -134,7 +137,7 @@ public class TestSpider {
 
         HttpHeaders headers = new HttpHeaders();
         List<String> cookies = new ArrayList();
-        cookies.add("JSESSIONID=m6DBgJ7HLzsrJvKn79Uydt2r.undefined");
+        cookies.add(COOKIE_SESSION);
 
         headers.put(HttpHeaders.COOKIE, cookies);
         headers.add(HttpHeaders.USER_AGENT, USER_AGENT);
@@ -143,7 +146,7 @@ public class TestSpider {
         Map paramMap = new HashMap();
         paramMap.put("txtLoginUsername", "qinyupei");
         paramMap.put("txtLoginPassword", "ws84207ws");
-        paramMap.put("txtLoginCaptcha", "3708");
+        paramMap.put("txtLoginCaptcha", "7337");
 
         HttpEntity<String> requestEntity = new HttpEntity(paramMap, headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, requestEntity, String.class);
@@ -151,6 +154,7 @@ public class TestSpider {
         System.out.println(responseEntity.getBody());
     }
 
+/*
     @Test
     public void testLottery() {
         RestTemplate restTemplate = new RestTemplate();
@@ -170,6 +174,7 @@ public class TestSpider {
 
         System.out.println(responseEntity.getBody());
     }
+*/
 
 
     @Test
@@ -179,7 +184,7 @@ public class TestSpider {
 
         HttpHeaders headers = new HttpHeaders();
         List<String> cookies = new ArrayList();
-        cookies.add("JSESSIONID=m6DBgJ7HLzsrJvKn79Uydt2r.undefined");
+        cookies.add(COOKIE_SESSION);
 
         headers.put(HttpHeaders.COOKIE, cookies);
         headers.add(HttpHeaders.USER_AGENT, USER_AGENT);
@@ -207,7 +212,7 @@ public class TestSpider {
         requestEntity = new HttpEntity(null, headers);
         ResponseEntity<String> responseEntity2 = restTemplate.exchange(link, HttpMethod.GET, requestEntity, String.class);
 
-        System.out.println(responseEntity2.getBody());
+        System.out.println(responseEntity2.getStatusCodeValue());
     }
 
 
@@ -240,7 +245,7 @@ public class TestSpider {
 
         MultiValueMap paramMap = new LinkedMultiValueMap();
         paramMap.add("command", "BET");
-        paramMap.add("sessionId", "4d5af821-b932-4872-b3e2-d6d7fd92a3ab");
+        paramMap.add("sessionId", "57173f45-a908-45b7-b692-2166a2301f8c");
         paramMap.add("oddsAdapt", "true");
 
         paramMap.add("bets", JacksonUtil.toJson(list));
