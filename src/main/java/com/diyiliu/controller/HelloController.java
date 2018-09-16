@@ -16,6 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class HelloController {
 
+
+    @RequestMapping("/")
+    public String index(){
+
+        return "hello";
+    }
+
     @ResponseBody
     @RequestMapping("/hi")
     public String sayHello(HttpServletRequest request, @RequestBody String body) {

@@ -1,3 +1,2 @@
-# https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#common-application-properties
 server:
-  port: 8082
+  port: 8080

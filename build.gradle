@@ -12,13 +12,15 @@ repositories {
 }
 
 ext{
-    springBootVersion = '1.5.9.RELEASE'
+    springBootVersion = '2.0.4.RELEASE'
 
 }
 
 dependencies {
     // spring
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$springBootVersion"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: "$springBootVersion"
+
 
     // test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "$springBootVersion"
