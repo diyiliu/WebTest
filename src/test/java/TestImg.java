@@ -1,5 +1,4 @@
 import com.jhlabs.image.CropFilter;
-import com.jhlabs.image.ScaleFilter;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -12,6 +11,24 @@ import java.io.File;
  * Update: 2018-09-17 11:39
  */
 public class TestImg {
+
+    @Test
+    public void test() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture.jpg";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\picture1.jpg";
+
+        BufferedImage img = ImageIO.read(new File(path));
+        img = img.getSubimage(352, 72, 512, 512);
+        ImageIO.write(img, "jpg", new File(path1));
+    }
+
+    @Test
+    public void test1() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture.jpg";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\picture1.jpg";
+
+    }
+
 
 
     @Test

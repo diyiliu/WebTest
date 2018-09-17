@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.imagej:ij:1.52f">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/.gradle/caches/modules-2/files-2.1/net.imagej/ij/1.52f/470c45441ff783c8e7d58a3aafef5121d39866b5/ij-1.52f.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/.gradle/caches/modules-2/files-2.1/net.imagej/ij/1.52f/5ab6fa80a62d2d90701347ba18abeb4e1c7eb237/ij-1.52f-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
