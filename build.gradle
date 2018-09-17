@@ -7,6 +7,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     mavenCentral()
     jcenter()
 }
@@ -21,6 +22,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$springBootVersion"
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: "$springBootVersion"
 
+    compile group: 'com.jhlabs', name: 'filters', version: '2.0.235-1'
 
     // test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "$springBootVersion"
