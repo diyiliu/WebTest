@@ -35,7 +35,7 @@ public class ImageController {
     private Environment environment;
 
     @RequestMapping
-    public String image(){
+    public String image() {
 
         return "image";
     }
@@ -57,7 +57,7 @@ public class ImageController {
 
         // 创建临时文件
         String path = resDir.getFile() + File.separator + "pic_" + fileName;
-        File tempFile =  new File(path);
+        File tempFile = new File(path);
         FileCopyUtils.copy(file.getBytes(), tempFile);
         // 剪切图片
         cutPic(path, dataMap);
@@ -65,11 +65,11 @@ public class ImageController {
         return 1;
     }
 
-    private void cutPic(String path, Map data) throws Exception{
-        int x =  new BigDecimal((double) data.get("x")).intValue();
-        int y =  new BigDecimal((double) data.get("y")).intValue();
-        int w =  new BigDecimal((double) data.get("width")).intValue();
-        int h =  new BigDecimal((double) data.get("height")).intValue();
+    private void cutPic(String path, Map data) {
+        int x = new BigDecimal(String.valueOf(data.get("x"))).intValue();
+        int y = new BigDecimal(String.valueOf(data.get("y"))).intValue();
+        int w = new BigDecimal(String.valueOf(data.get("width"))).intValue();
+        int h = new BigDecimal(String.valueOf(data.get("height"))).intValue();
 
         ImagePlus imp = IJ.openImage(path);
         imp.setRoi(x, y, w, h);
