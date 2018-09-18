@@ -1,4 +1,6 @@
-import com.jhlabs.image.CropFilter;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.process.ImageProcessor;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -27,6 +29,44 @@ public class TestImg {
         String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture.jpg";
         String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\picture1.jpg";
 
+        IJ.open(path);
+        IJ.run("Size...", "width=400 height=300 constrain average interpolation=Bilinear");
+        IJ.save(path1);
+    }
+
+
+    /**
+     * 重置图片大小
+     *
+     * @throws Exception
+     */
+    @Test
+    public void test11() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture.jpg";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\picture1.jpg";
+
+        ImagePlus imp = IJ.openImage(path);
+        ImageProcessor processor = imp.getProcessor().resize(218, 218);
+        imp.setProcessor(processor);
+
+        IJ.save(imp, path1);
+    }
+
+    /**
+     * 剪切图片
+     *
+     * @throws Exception
+     */
+    @Test
+    public void test111() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture.jpg";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\picture1.jpg";
+
+        ImagePlus imp = IJ.openImage(path);
+        imp.setRoi(500, 0, 516, 516);
+        imp = imp.duplicate();
+
+        IJ.save(imp, path1);
     }
 
 
@@ -34,20 +74,14 @@ public class TestImg {
     @Test
     public void test2() throws Exception {
         String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture.jpg";
-        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\picture1.jpg";
         String path2 = "C:\\Users\\DIYILIU\\Desktop\\images\\picture2.jpg";
 
+        ImagePlus imp = IJ.openImage(path);
+        imp.setRoi(500, 0, 516, 516);
+        imp = imp.duplicate();
 
-        BufferedImage fromImage = ImageIO.read(new File(path));
-        //
-        BufferedImage toImage = new BufferedImage(576, 576, BufferedImage.TYPE_INT_RGB);
-        CropFilter cropFilter = new CropFilter(352, 72, 576, 576);
-        cropFilter.filter(fromImage, toImage);
-
-//        toImage = new BufferedImage(128, 128, BufferedImage.TYPE_INT_RGB);
-//        ScaleFilter scaleFilter = new ScaleFilter(128, 128);
-//        scaleFilter.filter(fromImage, toImage);
-        // 写回指定目标文件
-        ImageIO.write(toImage, "jpg", new File(path2));
+        ImageProcessor processor = imp.getProcessor().resize(128, 128);
+        imp.setProcessor(processor);
+        IJ.save(imp, path2);
     }
 }
