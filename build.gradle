@@ -23,6 +23,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: "$springBootVersion"
 
     compile group: 'net.imagej', name: 'ij', version: '1.52f'
+    compile group: 'com.madgag', name: 'animated-gif-lib', version: '1.4'
 
     // test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "$springBootVersion"
