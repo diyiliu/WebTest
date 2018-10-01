@@ -3,6 +3,7 @@ import com.madgag.gif.fmsware.GifDecoder;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.process.ImageProcessor;
+import net.coobird.thumbnailator.Thumbnails;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -187,5 +188,58 @@ public class TestImg {
         File outFile = new File(outputPath);
         BufferedImage image = ImageIO.read(outFile);
         ImageIO.write(image, outFile.getName(), outFile);
+    }
+
+    /**
+     * 重置图片大小
+     *
+     * @throws Exception
+     */
+    @Test
+    public void test13() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\full\\01.jpg";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\full\\thumb\\01.jpg";
+
+        ImagePlus imp = IJ.openImage(path);
+        ImageProcessor processor = imp.getProcessor().resize(346);
+        imp.setProcessor(processor);
+
+        IJ.save(imp, path1);
+    }
+
+    @Test
+    public void test14() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\2.gif";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\22.gif";
+
+
+        /**
+         * 指定坐标
+         */
+        /**
+         * 指定坐标
+         */
+        Thumbnails.of(path).sourceRegion(60, 50, 400, 400).scale(1).outputFormat("gif").toFile(path1);
+    }
+
+
+    @Test
+    public void test15() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\test.JPG";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\test1.JPG";
+
+        //保持纵横比，质量降低为原来的42%
+        Thumbnails.of(path).scale(1f).outputQuality(1f).toFile(path1);
+    }
+
+
+    @Test
+    public void test16() throws Exception {
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\test.JPG";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\test1.JPG";
+
+        Thumbnails.of(path)
+                .height(200)
+                .toFile(path1);
     }
 }

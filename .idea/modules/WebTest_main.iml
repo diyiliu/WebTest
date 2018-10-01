@@ -23,6 +23,7 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-thymeleaf:2.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: net.imagej:ij:1.52f" level="project" />
     <orderEntry type="library" name="Gradle: com.madgag:animated-gif-lib:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: net.coobird:thumbnailator:0.4.8" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-json:2.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:2.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:2.0.4.RELEASE" level="project" />
