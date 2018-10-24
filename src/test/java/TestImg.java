@@ -4,9 +4,11 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.process.ImageProcessor;
 import net.coobird.thumbnailator.Thumbnails;
+import net.sf.image4j.codec.ico.ICOEncoder;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -225,13 +227,28 @@ public class TestImg {
 
     @Test
     public void test15() throws Exception {
-        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\test.JPG";
-        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\gif\\test1.JPG";
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture22.jpg";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\22.ico";
 
         //保持纵横比，质量降低为原来的42%
         Thumbnails.of(path).scale(1f).outputQuality(1f).toFile(path1);
     }
 
+    @Test
+    public void test115() throws Exception{
+        String path = "C:\\Users\\DIYILIU\\Desktop\\images\\picture22.jpg";
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\22.jpg";
+        String path2 = "C:\\Users\\DIYILIU\\Desktop\\images\\22.ico";
+
+        Thumbnails.of(path)
+                .height(64)
+                .toFile(path1);
+
+        BufferedImage image = ImageIO.read(new File(path1));
+        ImageIO.write(image, "jpg", new File(path2));
+
+
+    }
 
     @Test
     public void test16() throws Exception {
@@ -241,5 +258,24 @@ public class TestImg {
         Thumbnails.of(path)
                 .height(200)
                 .toFile(path1);
+    }
+
+    @Test
+    public void test17() throws Exception {
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\22.jpg";
+        String path2 = "C:\\Users\\DIYILIU\\Desktop\\images\\22.ico";
+
+        ImagePlus imp = IJ.openImage(path1);
+        IJ.save(imp, path2);
+    }
+
+    @Test
+    public void test18() throws Exception {
+        String path1 = "C:\\Users\\DIYILIU\\Desktop\\images\\22.jpg";
+        String path2 = "C:\\Users\\DIYILIU\\Desktop\\images\\22.ico";
+
+
+        BufferedImage image = ImageIO.read(new File(path1));
+        ICOEncoder.write(image, new File(path2));
     }
 }
